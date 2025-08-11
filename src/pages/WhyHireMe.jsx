@@ -11,8 +11,8 @@ const WhyHireMe = () => {
     {
       imageUrl: scholar,
       altText: "NTSE Scholar",
-      title: "2019",
-      description: "NTSE Scholar",
+      title: "2024",
+      description: "Bahria Graduated",
     },
     {
       imageUrl: project,
@@ -21,15 +21,19 @@ const WhyHireMe = () => {
       description: "Completed Projects",
     },
     {
-      imageUrl: codechef,
-      altText: "Codechef Rating",
-      title: "4★",
-      description: "Codechef Rating",
+      imageUrl: project,
+      altText: "System Design",
+      title: "System Design",
+      description: "Scalable system design",
+      // imageUrl: codechef,
+      // altText: "Codechef Rating",
+      // title: "4★",
+      // description: "Codechef Rating",
     },
     {
       imageUrl: leetcode,
       altText: "LeetCode Problems Solved",
-      title: "150",
+      title: "100",
       description: "LeetCode Problems Solved",
     },
   ];

@@ -61,7 +61,7 @@ const Skills = () => {
         transition={{ delay: 0.2, duration: 0.5 }}
         viewport={{ margin: "-100px", once: true }}
       >
-        <h3 className="text-xl md:text-2xl font-semibold text-center mb-6 text-blue-600 dark:text-blue-300">
+        {/* <h3 className="text-xl md:text-2xl font-semibold text-center mb-6 text-blue-600 dark:text-blue-300">
           DevOps & Tools
         </h3>
         <div className="flex flex-col gap-6 items-center">
@@ -75,7 +75,7 @@ const Skills = () => {
             <SemiDonutChart percentage={85} fill="#03B0FD" txt="Nginx" />
             <SemiDonutChart percentage={75} fill="#03B0FD" txt="Terraform" />
           </div>
-        </div>
+        </div> */}
       </motion.div>
     </motion.section>
   );
