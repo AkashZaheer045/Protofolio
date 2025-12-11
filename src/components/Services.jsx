@@ -14,13 +14,13 @@ const ServiceCard = ({ icon, title, description }) => {
     return (
         <motion.div
             whileHover={{ y: -5, borderColor: "rgba(56, 189, 248, 0.5)" }}
-            className="bg-gray-800/40 backdrop-blur-sm border border-gray-700 p-8 rounded-2xl flex flex-col gap-4 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300"
+            className="bg-almond-50 dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700 p-8 rounded-2xl flex flex-col gap-4 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300"
         >
-            <div className="w-12 h-12 rounded-lg bg-gray-700/50 flex items-center justify-center text-cyan-400 text-2xl mb-2">
+            <div className="w-12 h-12 rounded-lg bg-blue-100 dark:bg-gray-700/50 flex items-center justify-center text-blue-600 dark:text-cyan-400 text-2xl mb-2">
                 <FontAwesomeIcon icon={icon} />
             </div>
-            <h3 className="text-xl font-bold text-white font-sans">{title}</h3>
-            <p className="text-gray-400 leading-relaxed text-sm">{description}</p>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white font-sans">{title}</h3>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">{description}</p>
         </motion.div>
     );
 };
@@ -66,7 +66,7 @@ const Services = () => {
     ];
 
     return (
-        <section id="services" className="py-20 px-6 md:px-12 bg-gray-950">
+        <section id="services" className="py-20 px-6 md:px-12 bg-almond-200 dark:bg-gray-950">
             <div className="max-w-6xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -74,10 +74,10 @@ const Services = () => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+                    <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
                         What I Do
                     </h2>
-                    <p className="text-gray-400 max-w-2xl mx-auto">
+                    <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
                         Leveraging modern technologies to build scalable, secure, and intelligent backend solutions.
                     </p>
                 </motion.div>

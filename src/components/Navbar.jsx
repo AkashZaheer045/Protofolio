@@ -28,10 +28,10 @@ const Navbar = () => {
   const toggleDarkMode = () => setIsDark(!isDark);
 
   return (
-    <header className="sticky top-0 z-50 bg-gray-900/80 backdrop-blur-md shadow-md border-b border-gray-800 transition-colors duration-300">
+    <header className="sticky top-0 z-50 bg-almond-50/95 dark:bg-gray-900/80 backdrop-blur-md shadow-md border-b border-almond-300 dark:border-gray-800 transition-colors duration-300">
       <nav className="container mx-auto flex items-center justify-between px-4 py-3">
-        <h2 className="text-2xl font-bold text-blue-400 font-mono">
-          &lt;Akash /&gt;
+        <h2 className="text-2xl font-bold text-blue-600 dark:text-blue-400 font-mono">
+          Portfolio
         </h2>
         <div className="hidden md:flex space-x-6 items-center">
           <ScrollLink
@@ -40,7 +40,7 @@ const Navbar = () => {
             smooth={true}
             offset={-80}
             duration={600}
-            className="cursor-pointer text-gray-300 hover:text-blue-400 transition font-medium text-sm uppercase tracking-wide"
+            className="cursor-pointer text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition font-medium text-sm uppercase tracking-wide"
           >
             Home
           </ScrollLink>
@@ -50,7 +50,7 @@ const Navbar = () => {
             smooth={true}
             offset={-80}
             duration={600}
-            className="cursor-pointer text-gray-300 hover:text-blue-400 transition font-medium text-sm uppercase tracking-wide"
+            className="cursor-pointer text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition font-medium text-sm uppercase tracking-wide"
           >
             About Me
           </ScrollLink>
@@ -60,7 +60,7 @@ const Navbar = () => {
             smooth={true}
             offset={-80}
             duration={600}
-            className="cursor-pointer text-gray-300 hover:text-blue-400 transition font-medium text-sm uppercase tracking-wide"
+            className="cursor-pointer text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition font-medium text-sm uppercase tracking-wide"
           >
             Services
           </ScrollLink>
@@ -70,7 +70,7 @@ const Navbar = () => {
             smooth={true}
             offset={-80}
             duration={600}
-            className="cursor-pointer text-gray-300 hover:text-blue-400 transition font-medium text-sm uppercase tracking-wide"
+            className="cursor-pointer text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition font-medium text-sm uppercase tracking-wide"
           >
             Skills
           </ScrollLink>
@@ -80,7 +80,7 @@ const Navbar = () => {
             smooth={true}
             offset={-80}
             duration={600}
-            className="cursor-pointer text-gray-300 hover:text-blue-400 transition font-medium text-sm uppercase tracking-wide"
+            className="cursor-pointer text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition font-medium text-sm uppercase tracking-wide"
           >
             Projects
           </ScrollLink>
@@ -90,7 +90,7 @@ const Navbar = () => {
             smooth={true}
             offset={-80}
             duration={600}
-            className="cursor-pointer text-gray-300 hover:text-blue-400 transition font-medium text-sm uppercase tracking-wide"
+            className="cursor-pointer text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition font-medium text-sm uppercase tracking-wide"
           >
             Contact
           </ScrollLink>
@@ -98,7 +98,7 @@ const Navbar = () => {
           {/* Toggle Button */}
           <button
             onClick={toggleDarkMode}
-            className="p-2 rounded-full bg-gray-800 text-yellow-400 hover:bg-gray-700 transition"
+            className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-yellow-400 hover:bg-gray-300 dark:hover:bg-gray-700 transition"
             aria-label="Toggle Theme"
           >
             {isDark ? (
@@ -106,7 +106,7 @@ const Navbar = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m8.66-13.66l-.71.71M4.05 19.95l-.71.71M21 12h-1M4 12H3m16.66 5.66l-.71-.71M4.05 4.05l-.71-.71M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
               </svg>
             ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
               </svg>
             )}

@@ -9,14 +9,14 @@ const AboutMe = () => {
       transition={{ delay: 0.2, duration: 0.5 }}
       viewport={{ once: true }}
       id="aboutMey"
-      className="py-16 px-6 md:px-16 bg-white dark:bg-gray-900"
+      className="py-16 px-6 md:px-16 bg-almond-100 dark:bg-gray-900"
     >
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-blue-700 dark:text-blue-400">
+      <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-gray-900 dark:text-blue-400">
         About Me
       </h2>
       <div className="flex flex-col md:flex-row items-center md:items-start gap-8 max-w-4xl mx-auto">
         <motion.div
-          className="flex-1 bg-blue-50 dark:bg-gray-800 rounded-xl shadow p-6 md:p-8 flex flex-col justify-center"
+          className="flex-1 bg-almond-50 dark:bg-gray-800 border border-almond-300 dark:border-gray-700 rounded-xl shadow-lg p-6 md:p-8 flex flex-col justify-center"
           whileHover={{ scale: 1.02 }}
           transition={{ type: "spring", stiffness: 300 }}
         >

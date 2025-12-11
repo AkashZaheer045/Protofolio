@@ -22,25 +22,40 @@ import {
 const SkillCard = ({ name, level, icon, color }) => {
   return (
     <motion.div
-      whileHover={{ y: -5 }}
-      className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 p-6 rounded-2xl shadow-xl flex flex-col items-center gap-4 hover:border-blue-500/50 transition-all group"
+      whileHover={{ y: -10, scale: 1.02 }}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      className="bg-almond-50 dark:bg-gray-800/50 backdrop-blur-sm border border-almond-300 dark:border-gray-700 p-6 rounded-2xl shadow-xl flex flex-col items-center gap-4 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/20 transition-all group cursor-pointer"
     >
-      <div className={`text-4xl ${color} group-hover:drop-shadow-[0_0_10px_rgba(34,211,238,0.5)] transition-all duration-300`}>
+      <motion.div
+        className={`text-4xl ${color} group-hover:scale-110 transition-all duration-300`}
+        whileHover={{ rotate: [0, -10, 10, -10, 0] }}
+        transition={{ duration: 0.5 }}
+      >
         <FontAwesomeIcon icon={icon} />
-      </div>
+      </motion.div>
       <div className="w-full">
-        <h4 className="text-xl font-semibold text-gray-200 text-center mb-3 font-sans">
+        <h4 className="text-xl font-semibold text-gray-900 dark:text-gray-200 text-center mb-3 font-sans">
           {name}
         </h4>
-        <div className="h-2 w-full bg-gray-700 rounded-full overflow-hidden">
+        <div className="h-2 w-full bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
           <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: `${level}%` }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="h-full bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full"
-          />
+            viewport={{ once: true }}
+            transition={{ duration: 1.5, ease: "easeOut", delay: 0.2 }}
+            className="h-full bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full relative overflow-hidden"
+          >
+            <motion.div
+              className="absolute inset-0 bg-white/30"
+              animate={{ x: ['-100%', '100%'] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+            />
+          </motion.div>
         </div>
-        <p className="text-right text-xs text-gray-400 mt-1">{level}%</p>
+        <p className="text-right text-xs text-gray-500 dark:text-gray-400 mt-1">{level}%</p>
       </div>
     </motion.div>
   );
@@ -66,13 +81,13 @@ const Skills = () => {
 
   return (
     <section
-      className="py-20 px-6 md:px-16 bg-gray-950 relative overflow-hidden"
+      className="py-20 px-6 md:px-16 bg-almond-100 dark:bg-gray-950 relative overflow-hidden"
       id="skills"
     >
       {/* Background Decor */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-[10%] left-[5%] w-72 h-72 bg-blue-600/10 rounded-full blur-[80px]" />
-        <div className="absolute bottom-[10%] right-[5%] w-72 h-72 bg-purple-600/10 rounded-full blur-[80px]" />
+        <div className="absolute top-[10%] left-[5%] w-72 h-72 bg-blue-600/5 dark:bg-blue-600/10 rounded-full blur-[80px]" />
+        <div className="absolute bottom-[10%] right-[5%] w-72 h-72 bg-purple-600/5 dark:bg-purple-600/10 rounded-full blur-[80px]" />
       </div>
 
       <motion.div
@@ -82,7 +97,7 @@ const Skills = () => {
         transition={{ duration: 0.6 }}
         className="max-w-6xl mx-auto relative z-10"
       >
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-cyan-300">
           Technical Arsenal
         </h2>
 

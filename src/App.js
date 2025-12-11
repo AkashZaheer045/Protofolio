@@ -21,7 +21,7 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-950 text-gray-100">
+    <div className="min-h-screen bg-almond-100 dark:bg-gray-950 text-gray-900 dark:text-gray-100">
       {isLoading ? (
         <div className="flex items-center justify-center h-screen">
           <Loading />

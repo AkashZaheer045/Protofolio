@@ -18,7 +18,7 @@ const Projects = () => {
         "Integrated location-based services for real-time tracking.",
       ],
       links: {
-        repo: "https://github.com/BitAnon47",
+        repo: "https://github.com/AkashZaheer045",
         demo: null,
       },
     },
@@ -34,7 +34,7 @@ const Projects = () => {
         "Responsive UI for seamless mobile ordering.",
       ],
       links: {
-        repo: "https://github.com/BitAnon47/baked-bliss",
+        repo: "https://github.com/AkashZaheer045/baked-bliss",
         demo: null,
       },
     },
@@ -50,7 +50,7 @@ const Projects = () => {
         "Teacher-student bidding system logic.",
       ],
       links: {
-        repo: "https://github.com/BitAnon47/study-buddy",
+        repo: "https://github.com/AkashZaheer045/study-buddy",
         demo: null,
       },
     },
@@ -66,7 +66,7 @@ const Projects = () => {
         "Efficient order processing system.",
       ],
       links: {
-        repo: "https://github.com/BitAnon47/book-store",
+        repo: "https://github.com/AkashZaheer045/book-store",
         demo: null,
       },
     },
@@ -78,14 +78,14 @@ const Projects = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2, duration: 0.5 }}
       viewport={{ margin: "-100px", once: true }}
-      className="py-20 px-6 md:px-16 bg-gray-950"
+      className="py-20 px-6 md:px-16 bg-almond-200 dark:bg-gray-950"
       id="project"
     >
       <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+        <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
           Featured Projects
         </h2>
-        <p className="text-gray-400 max-w-2xl mx-auto">
+        <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
           A collection of high-performance, scalable applications built with modern tech stacks.
         </p>
       </div>

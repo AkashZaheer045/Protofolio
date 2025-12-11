@@ -1,34 +1,32 @@
 import { motion } from "framer-motion";
 import React from "react";
-import codechef from "../assets/images/codechef.png";
-import leetcode from "../assets/images/leetcode.png";
-import project from "../assets/images/project.png";
-import scholar from "../assets/images/scholarship.png";
-import Card from "../components/Card";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faServer,
+  faGaugeHigh,
+  faShieldHalved,
+  faLightbulb
+} from "@fortawesome/free-solid-svg-icons";
 
 const WhyHireMe = () => {
   const whyHireMeCards = [
     {
-      imageUrl: scholar,
-      altText: "Microservices Architect",
+      icon: faServer,
       title: "Microservices",
       description: "Modular, Scalable Systems",
     },
     {
-      imageUrl: project,
-      altText: "High Performance",
+      icon: faGaugeHigh,
       title: "30% Faster",
       description: "API Response Optimization",
     },
     {
-      imageUrl: project,
-      altText: "Secure Systems",
+      icon: faShieldHalved,
       title: "Security",
       description: "OAuth, JWT & Tess Integration",
     },
     {
-      imageUrl: leetcode,
-      altText: "Problem Solver",
+      icon: faLightbulb,
       title: "Problem Solver",
       description: "Efficient & Clean Code",
     },
@@ -40,23 +38,27 @@ const WhyHireMe = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2, duration: 0.5 }}
       viewport={{ once: true }}
-      className="py-16 px-6 md:px-16 bg-gray-900"
+      className="py-16 px-6 md:px-16 bg-almond-200 dark:bg-gray-900"
       id="why-hire-me"
     >
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-blue-700 dark:text-blue-400">
+      <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-gray-900 dark:text-blue-400">
         Why Hire Me?
       </h2>
-      <div className="flex flex-col sm:flex-row gap-8 max-w-4xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
         {whyHireMeCards.map((card, idx) => (
           <motion.div
             key={idx}
-            initial={{ opacity: 0, x: idx % 2 === 0 ? -120 : 120 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 * idx, duration: 0.5 }}
             viewport={{ once: true }}
-            className="flex-1"
+            className="bg-almond-50 dark:bg-gray-800 border border-almond-300 dark:border-gray-700 rounded-xl p-6 flex flex-col items-center text-center gap-4 hover:-translate-y-1 transition-transform shadow-lg"
           >
-            <Card {...card} explore={null} />
+            <div className="w-16 h-16 rounded-full bg-blue-100 dark:bg-gray-700 flex items-center justify-center text-blue-600 dark:text-cyan-400 text-2xl">
+              <FontAwesomeIcon icon={card.icon} />
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white">{card.title}</h3>
+            <p className="text-gray-600 dark:text-gray-400 text-sm">{card.description}</p>
           </motion.div>
         ))}
       </div>
