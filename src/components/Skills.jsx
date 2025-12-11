@@ -5,18 +5,20 @@ import {
   faNodeJs,
   faJs,
   faPython,
-  faReact,
-  faHtml5,
+  faJava,
   faDocker,
   faAws,
+  faGitAlt,
 } from "@fortawesome/free-brands-svg-icons";
 import {
   faServer,
   faDatabase,
-  faNetworkWired,
   faCode,
-  faMicrochip,
-  faGlobe,
+  faMobile,
+  faBrain,
+  faChartLine,
+  faChartBar,
+  faCalculator,
 } from "@fortawesome/free-solid-svg-icons";
 
 const SkillCard = ({ name, level, icon, color }) => {
@@ -62,21 +64,57 @@ const SkillCard = ({ name, level, icon, color }) => {
 };
 
 const Skills = () => {
-  const languages = [
-    { name: "JavaScript", level: 90, icon: faJs, color: "text-yellow-400" },
-    { name: "TypeScript", level: 85, icon: faCode, color: "text-blue-400" },
-    { name: "Python", level: 80, icon: faPython, color: "text-blue-500" },
-    { name: "C++", level: 75, icon: faMicrochip, color: "text-blue-600" },
-  ];
-
-  const frameworks = [
-    { name: "Node.js", level: 90, icon: faNodeJs, color: "text-green-500" },
-    { name: "Express.js", level: 85, icon: faServer, color: "text-gray-300" },
-    { name: "Nest.js", level: 80, icon: faServer, color: "text-red-500" },
-    { name: "React", level: 85, icon: faReact, color: "text-cyan-400" },
-    { name: "Microservices", level: 85, icon: faNetworkWired, color: "text-purple-400" },
-    { name: "REST APIs", level: 90, icon: faGlobe, color: "text-orange-400" },
-    { name: "GraphQL", level: 80, icon: faDatabase, color: "text-pink-400" },
+  const skillCategories = [
+    {
+      category: "Languages",
+      skills: [
+        { name: "JavaScript", level: 90, icon: faJs, color: "text-yellow-400" },
+        { name: "Python", level: 75, icon: faPython, color: "text-blue-500" },
+        { name: "Java", level: 70, icon: faJava, color: "text-red-500" },
+      ]
+    },
+    {
+      category: "Backend Frameworks",
+      skills: [
+        { name: "Node.js", level: 95, icon: faNodeJs, color: "text-green-500" },
+        { name: "Express.js", level: 90, icon: faServer, color: "text-gray-600" },
+        { name: "NestJS", level: 75, icon: faCode, color: "text-red-600" },
+      ]
+    },
+    {
+      category: "Databases",
+      skills: [
+        { name: "MongoDB", level: 85, icon: faDatabase, color: "text-green-600" },
+        { name: "PostgreSQL", level: 80, icon: faDatabase, color: "text-blue-600" },
+        { name: "Redis", level: 75, icon: faDatabase, color: "text-red-600" },
+      ]
+    },
+    {
+      category: "Cloud & DevOps",
+      skills: [
+        { name: "AWS", level: 85, icon: faAws, color: "text-orange-500" },
+        { name: "Docker", level: 80, icon: faDocker, color: "text-blue-500" },
+        { name: "Git", level: 90, icon: faGitAlt, color: "text-orange-600" },
+      ]
+    },
+    {
+      category: "Mobile Development",
+      skills: [
+        { name: "Flutter", level: 80, icon: faMobile, color: "text-blue-400" },
+        { name: "Java (Android)", level: 70, icon: faJava, color: "text-red-500" },
+        { name: "XML", level: 75, icon: faCode, color: "text-orange-500" },
+      ]
+    },
+    {
+      category: "AI/ML & Data Science",
+      skills: [
+        { name: "TensorFlow", level: 75, icon: faBrain, color: "text-orange-600" },
+        { name: "PyTorch", level: 70, icon: faBrain, color: "text-red-600" },
+        { name: "Scikit-learn", level: 80, icon: faChartLine, color: "text-blue-600" },
+        { name: "Pandas", level: 85, icon: faChartBar, color: "text-purple-600" },
+        { name: "NumPy", level: 80, icon: faCalculator, color: "text-cyan-600" },
+      ]
+    },
   ];
 
   return (
@@ -101,28 +139,26 @@ const Skills = () => {
           Technical Arsenal
         </h2>
 
-        {/* Languages Section */}
-        <div className="mb-20">
-          <h3 className="text-2xl font-semibold mb-8 text-gray-300 border-l-4 border-blue-500 pl-4">
-            Languages from Core
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {languages.map((skill, index) => (
-              <SkillCard key={index} {...skill} />
-            ))}
-          </div>
-        </div>
-
-        {/* Frameworks Section */}
-        <div>
-          <h3 className="text-2xl font-semibold mb-8 text-gray-300 border-l-4 border-cyan-500 pl-4">
-            Frameworks & Systems
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {frameworks.map((skill, index) => (
-              <SkillCard key={index} {...skill} />
-            ))}
-          </div>
+        <div className="space-y-12">
+          {skillCategories.map((category, catIdx) => (
+            <motion.div
+              key={catIdx}
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: catIdx * 0.1, duration: 0.5 }}
+            >
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+                <span className="w-2 h-8 bg-gradient-to-b from-blue-500 to-cyan-400 rounded-full"></span>
+                {category.category}
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {category.skills.map((skill, idx) => (
+                  <SkillCard key={idx} {...skill} />
+                ))}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </motion.div>
     </section>
