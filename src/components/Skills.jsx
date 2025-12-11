@@ -24,33 +24,34 @@ import {
   faCalculator,
 } from "@fortawesome/free-solid-svg-icons";
 
+
 const SkillCard = ({ name, level, icon, color }) => {
   return (
     <motion.div
-      whileHover={{ y: -10, scale: 1.02 }}
-      initial={{ opacity: 0, y: 50 }}
+      whileHover={{ y: -3, scale: 1.02 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      className="bg-almond-50 dark:bg-gray-800/50 backdrop-blur-sm border border-almond-300 dark:border-gray-700 p-6 rounded-2xl shadow-xl flex flex-col items-center gap-4 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/20 transition-all group cursor-pointer"
+      transition={{ duration: 0.3 }}
+      className="relative bg-almond-50 dark:bg-gray-800/50 backdrop-blur-sm border border-almond-300 dark:border-gray-700 p-3 rounded-lg shadow-md flex flex-col gap-2 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/20 transition-all group cursor-pointer overflow-hidden"
     >
+      {/* Icon Watermark - Hidden by default, shown on hover */}
       <motion.div
-        className={`text-4xl ${color} group-hover:scale-110 transition-all duration-300`}
-        whileHover={{ rotate: [0, -10, 10, -10, 0] }}
-        transition={{ duration: 0.5 }}
+        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-6xl ${color} opacity-0 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none`}
       >
         <FontAwesomeIcon icon={icon} />
       </motion.div>
-      <div className="w-full">
-        <h4 className="text-xl font-semibold text-gray-900 dark:text-gray-200 text-center mb-3 font-sans">
+
+      <div className="w-full relative z-10">
+        <h4 className="text-base font-semibold text-gray-900 dark:text-gray-200 text-center mb-2 font-sans">
           {name}
         </h4>
-        <div className="h-2 w-full bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+        <div className="h-1.5 w-full bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
           <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: `${level}%` }}
             viewport={{ once: true }}
-            transition={{ duration: 1.5, ease: "easeOut", delay: 0.2 }}
+            transition={{ duration: 1, ease: "easeOut", delay: 0.1 }}
             className="h-full bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full relative overflow-hidden"
           >
             <motion.div

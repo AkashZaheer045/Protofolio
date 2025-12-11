@@ -20,6 +20,10 @@ module.exports = {
           900: '#201A10',  // Darkest
         },
       },
+      perspective: {
+        '1000': '1000px',
+        '2000': '2000px',
+      },
     },
     fontFamily: {
       sans: ['Outfit', 'sans-serif'],
