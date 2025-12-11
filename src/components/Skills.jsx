@@ -9,6 +9,9 @@ import {
   faDocker,
   faAws,
   faGitAlt,
+  faReact,
+  faAngular,
+  faHtml5,
 } from "@fortawesome/free-brands-svg-icons";
 import {
   faServer,
@@ -64,23 +67,51 @@ const SkillCard = ({ name, level, icon, color }) => {
 };
 
 const Skills = () => {
-  const skillCategories = [
+  // Languages - Full width section
+  const languages = [
+    { name: "JavaScript", level: 90, icon: faJs, color: "text-yellow-400" },
+    { name: "Python", level: 75, icon: faPython, color: "text-blue-500" },
+    { name: "Java", level: 70, icon: faJava, color: "text-red-500" },
+  ];
+
+  // Core expertise - In sequence
+  const coreExpertise = [
     {
-      category: "Languages",
+      category: "Mobile Development",
       skills: [
-        { name: "JavaScript", level: 90, icon: faJs, color: "text-yellow-400" },
-        { name: "Python", level: 75, icon: faPython, color: "text-blue-500" },
-        { name: "Java", level: 70, icon: faJava, color: "text-red-500" },
+        { name: "Flutter", level: 80, icon: faMobile, color: "text-blue-400" },
+        { name: "Java (Android)", level: 70, icon: faJava, color: "text-red-500" },
+        { name: "XML", level: 75, icon: faCode, color: "text-orange-500" },
       ]
     },
     {
-      category: "Backend Frameworks",
+      category: "Frontend",
+      skills: [
+        { name: "React", level: 85, icon: faReact, color: "text-cyan-400" },
+        { name: "Angular", level: 75, icon: faAngular, color: "text-red-600" },
+        { name: "HTML/CSS", level: 90, icon: faHtml5, color: "text-orange-500" },
+      ]
+    },
+    {
+      category: "Backend",
       skills: [
         { name: "Node.js", level: 95, icon: faNodeJs, color: "text-green-500" },
         { name: "Express.js", level: 90, icon: faServer, color: "text-gray-600" },
         { name: "NestJS", level: 75, icon: faCode, color: "text-red-600" },
       ]
     },
+    {
+      category: "AI/ML",
+      skills: [
+        { name: "TensorFlow", level: 75, icon: faBrain, color: "text-orange-600" },
+        { name: "PyTorch", level: 70, icon: faBrain, color: "text-red-600" },
+        { name: "Scikit-learn", level: 80, icon: faChartLine, color: "text-blue-600" },
+      ]
+    },
+  ];
+
+  // Additional skills
+  const additionalSkills = [
     {
       category: "Databases",
       skills: [
@@ -95,24 +126,6 @@ const Skills = () => {
         { name: "AWS", level: 85, icon: faAws, color: "text-orange-500" },
         { name: "Docker", level: 80, icon: faDocker, color: "text-blue-500" },
         { name: "Git", level: 90, icon: faGitAlt, color: "text-orange-600" },
-      ]
-    },
-    {
-      category: "Mobile Development",
-      skills: [
-        { name: "Flutter", level: 80, icon: faMobile, color: "text-blue-400" },
-        { name: "Java (Android)", level: 70, icon: faJava, color: "text-red-500" },
-        { name: "XML", level: 75, icon: faCode, color: "text-orange-500" },
-      ]
-    },
-    {
-      category: "AI/ML & Data Science",
-      skills: [
-        { name: "TensorFlow", level: 75, icon: faBrain, color: "text-orange-600" },
-        { name: "PyTorch", level: 70, icon: faBrain, color: "text-red-600" },
-        { name: "Scikit-learn", level: 80, icon: faChartLine, color: "text-blue-600" },
-        { name: "Pandas", level: 85, icon: faChartBar, color: "text-purple-600" },
-        { name: "NumPy", level: 80, icon: faCalculator, color: "text-cyan-600" },
       ]
     },
   ];
@@ -140,7 +153,47 @@ const Skills = () => {
         </h2>
 
         <div className="space-y-12">
-          {skillCategories.map((category, catIdx) => (
+          {/* Languages Section - Full Width */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+              <span className="w-2 h-8 bg-gradient-to-b from-blue-500 to-cyan-400 rounded-full"></span>
+              Languages
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {languages.map((skill, idx) => (
+                <SkillCard key={idx} {...skill} />
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Core Expertise - Frontend, Backend, AI in Sequence */}
+          {coreExpertise.map((category, catIdx) => (
+            <motion.div
+              key={catIdx}
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: catIdx * 0.1, duration: 0.5 }}
+            >
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+                <span className="w-2 h-8 bg-gradient-to-b from-purple-500 to-pink-400 rounded-full"></span>
+                {category.category}
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {category.skills.map((skill, idx) => (
+                  <SkillCard key={idx} {...skill} />
+                ))}
+              </div>
+            </motion.div>
+          ))}
+
+          {/* Additional Skills - Full Width */}
+          {additionalSkills.map((category, catIdx) => (
             <motion.div
               key={catIdx}
               initial={{ opacity: 0, x: -50 }}
