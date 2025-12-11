@@ -14,13 +14,13 @@ const ServiceCard = ({ icon, title, description }) => {
     return (
         <motion.div
             whileHover={{ y: -5, borderColor: "rgba(56, 189, 248, 0.5)" }}
-            className="bg-almond-50 dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700 p-8 rounded-2xl flex flex-col gap-4 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300"
+            className="h-full bg-almond-50 dark:bg-gray-800/40 backdrop-blur-sm border border-almond-300 dark:border-gray-700 p-8 rounded-2xl flex flex-col gap-4 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300"
         >
             <div className="w-12 h-12 rounded-lg bg-blue-100 dark:bg-gray-700/50 flex items-center justify-center text-blue-600 dark:text-cyan-400 text-2xl mb-2">
                 <FontAwesomeIcon icon={icon} />
             </div>
             <h3 className="text-xl font-bold text-gray-900 dark:text-white font-sans">{title}</h3>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">{description}</p>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm flex-grow">{description}</p>
         </motion.div>
     );
 };
@@ -83,13 +83,14 @@ const Services = () => {
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {services.map((service, index) => (
+                    {services.map((service, idx) => (
                         <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
+                            key={idx}
+                            initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
+                            transition={{ delay: idx * 0.1, duration: 0.5 }}
+                            className="h-full"
                         >
                             <ServiceCard {...service} />
                         </motion.div>
