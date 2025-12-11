@@ -20,7 +20,10 @@ const SemiDonutChart = ({ percentage, fill, txt }) => {
   const progress = (percentage / 100) * circumference;
 
   return (
-    <div className="flex flex-col items-center justify-center w-32 h-32">
+    <div
+      ref={ref}
+      className="flex flex-col items-center justify-center w-32 h-32"
+    >
       <svg width="100" height="60" viewBox="0 0 100 60">
         <path
           d="M10,50 A40,40 0 0,1 90,50"

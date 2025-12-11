@@ -12,7 +12,7 @@ const WhyHireMe = () => {
       imageUrl: scholar,
       altText: "NTSE Scholar",
       title: "2024",
-      description: "Bahria Graduated",
+      description: "University Graduate",
     },
     {
       imageUrl: project,
@@ -22,9 +22,9 @@ const WhyHireMe = () => {
     },
     {
       imageUrl: project,
-      altText: "System Design",
-      title: "System Design",
-      description: "Scalable system design",
+      altText: "Full Stack",
+      title: "Full Stack",
+      description: "Robust Web Applications",
       // imageUrl: codechef,
       // altText: "Codechef Rating",
       // title: "4★",
@@ -44,7 +44,7 @@ const WhyHireMe = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2, duration: 0.5 }}
       viewport={{ once: true }}
-      className="py-16 px-6 md:px-16 bg-blue-50 dark:bg-gray-900"
+      className="py-16 px-6 md:px-16 bg-gray-900"
       id="why-hire-me"
     >
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-blue-700 dark:text-blue-400">

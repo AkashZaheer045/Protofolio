@@ -1,83 +1,116 @@
 import { motion } from "framer-motion";
 import React from "react";
-import SemiDonutChart from "./SemiDonutChart";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faNodeJs,
+  faJs,
+  faPython,
+  faReact,
+  faHtml5,
+  faDocker,
+  faAws,
+} from "@fortawesome/free-brands-svg-icons";
+import {
+  faServer,
+  faDatabase,
+  faNetworkWired,
+  faCode,
+  faMicrochip,
+  faGlobe,
+} from "@fortawesome/free-solid-svg-icons";
+
+const SkillCard = ({ name, level, icon, color }) => {
+  return (
+    <motion.div
+      whileHover={{ y: -5 }}
+      className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 p-6 rounded-2xl shadow-xl flex flex-col items-center gap-4 hover:border-blue-500/50 transition-all group"
+    >
+      <div className={`text-4xl ${color} group-hover:drop-shadow-[0_0_10px_rgba(34,211,238,0.5)] transition-all duration-300`}>
+        <FontAwesomeIcon icon={icon} />
+      </div>
+      <div className="w-full">
+        <h4 className="text-xl font-semibold text-gray-200 text-center mb-3 font-sans">
+          {name}
+        </h4>
+        <div className="h-2 w-full bg-gray-700 rounded-full overflow-hidden">
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: `${level}%` }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="h-full bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full"
+          />
+        </div>
+        <p className="text-right text-xs text-gray-400 mt-1">{level}%</p>
+      </div>
+    </motion.div>
+  );
+};
 
 const Skills = () => {
+  const languages = [
+    { name: "JavaScript", level: 90, icon: faJs, color: "text-yellow-400" },
+    { name: "TypeScript", level: 85, icon: faCode, color: "text-blue-400" },
+    { name: "Python", level: 80, icon: faPython, color: "text-blue-500" },
+    { name: "C++", level: 75, icon: faMicrochip, color: "text-blue-600" },
+  ];
+
+  const frameworks = [
+    { name: "Node.js", level: 90, icon: faNodeJs, color: "text-green-500" },
+    { name: "Express.js", level: 85, icon: faServer, color: "text-gray-300" },
+    { name: "Nest.js", level: 80, icon: faServer, color: "text-red-500" },
+    { name: "React", level: 85, icon: faReact, color: "text-cyan-400" },
+    { name: "Microservices", level: 85, icon: faNetworkWired, color: "text-purple-400" },
+    { name: "REST APIs", level: 90, icon: faGlobe, color: "text-orange-400" },
+    { name: "GraphQL", level: 80, icon: faDatabase, color: "text-pink-400" },
+  ];
+
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.2, duration: 0.5 }}
-      viewport={{ margin: "-100px", once: true }}
-      className="py-16 px-6 md:px-16 bg-blue-50 dark:bg-gray-900"
+    <section
+      className="py-20 px-6 md:px-16 bg-gray-950 relative overflow-hidden"
       id="skills"
     >
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-blue-700 dark:text-blue-400">
-        Skills
-      </h2>
-      <h3 className="text-xl md:text-2xl font-semibold text-center mb-6 text-blue-600 dark:text-blue-300">
-        Programming Languages
-      </h3>
-      <div className="flex flex-col gap-6 items-center mb-10">
-        <div className="flex flex-wrap justify-center gap-6">
-          <SemiDonutChart percentage={90} fill="#03B0FD" txt="JavaScript" />
-          <SemiDonutChart percentage={85} fill="#03B0FD" txt="TypeScript" />
-          <SemiDonutChart percentage={80} fill="#03B0FD" txt="Python" />
-        </div>
-        <div className="flex flex-wrap justify-center gap-6">
-          <SemiDonutChart percentage={75} fill="#03B0FD" txt="C++" />
-          <SemiDonutChart percentage={70} fill="#03B0FD" txt="C" />
-        </div>
+      {/* Background Decor */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-[10%] left-[5%] w-72 h-72 bg-blue-600/10 rounded-full blur-[80px]" />
+        <div className="absolute bottom-[10%] right-[5%] w-72 h-72 bg-purple-600/10 rounded-full blur-[80px]" />
       </div>
+
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2, duration: 0.5 }}
-        viewport={{ margin: "-100px", once: true }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="max-w-6xl mx-auto relative z-10"
       >
-        <h3 className="text-xl md:text-2xl font-semibold text-center mb-6 text-blue-600 dark:text-blue-300">
-          Frameworks & Technologies
-        </h3>
-        <div className="flex flex-col gap-6 items-center mb-10">
-          <div className="flex flex-wrap justify-center gap-6">
-            <SemiDonutChart percentage={90} fill="#03B0FD" txt="Node.js" />
-            <SemiDonutChart percentage={85} fill="#03B0FD" txt="Express.js" />
-            <SemiDonutChart percentage={80} fill="#03B0FD" txt="Nest.js" />
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
+          Technical Arsenal
+        </h2>
+
+        {/* Languages Section */}
+        <div className="mb-20">
+          <h3 className="text-2xl font-semibold mb-8 text-gray-300 border-l-4 border-blue-500 pl-4">
+            Languages from Core
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+            {languages.map((skill, index) => (
+              <SkillCard key={index} {...skill} />
+            ))}
           </div>
-          <div className="flex flex-wrap justify-center gap-6">
-            <SemiDonutChart
-              percentage={85}
-              fill="#03B0FD"
-              txt="Microservices"
-            />
-            <SemiDonutChart percentage={90} fill="#03B0FD" txt="REST APIs" />
-            <SemiDonutChart percentage={80} fill="#03B0FD" txt="GraphQL" />
+        </div>
+
+        {/* Frameworks Section */}
+        <div>
+          <h3 className="text-2xl font-semibold mb-8 text-gray-300 border-l-4 border-cyan-500 pl-4">
+            Frameworks & Systems
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {frameworks.map((skill, index) => (
+              <SkillCard key={index} {...skill} />
+            ))}
           </div>
         </div>
       </motion.div>
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2, duration: 0.5 }}
-        viewport={{ margin: "-100px", once: true }}
-      >
-        {/* <h3 className="text-xl md:text-2xl font-semibold text-center mb-6 text-blue-600 dark:text-blue-300">
-          DevOps & Tools
-        </h3>
-        <div className="flex flex-col gap-6 items-center">
-          <div className="flex flex-wrap justify-center gap-6">
-            <SemiDonutChart percentage={85} fill="#03B0FD" txt="Docker" />
-            <SemiDonutChart percentage={80} fill="#03B0FD" txt="Kubernetes" />
-            <SemiDonutChart percentage={85} fill="#03B0FD" txt="AWS" />
-          </div>
-          <div className="flex flex-wrap justify-center gap-6">
-            <SemiDonutChart percentage={80} fill="#03B0FD" txt="Jenkins" />
-            <SemiDonutChart percentage={85} fill="#03B0FD" txt="Nginx" />
-            <SemiDonutChart percentage={75} fill="#03B0FD" txt="Terraform" />
-          </div>
-        </div> */}
-      </motion.div>
-    </motion.section>
+    </section>
   );
 };
 
