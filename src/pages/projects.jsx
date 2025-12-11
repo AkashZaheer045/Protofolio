@@ -8,11 +8,19 @@ import Card from "../components/Card";
 const Projects = () => {
   const cards = [
     {
+      imageUrl: baked_bliss, // Placeholder for Q Autos if image not available, utilizing existing asset or similar
+      altText: "Q Autos",
+      title: "Q Autos - Car Rental",
+      description:
+        "Microservices-based car rental platform featuring Stripe & Tess payments, location-based services, and asynchronous backend models for high performance.",
+      explore: "https://github.com/BitAnon47", // Fallback URL or specific repo
+    },
+    {
       imageUrl: baked_bliss,
       altText: "Baked Bliss",
       title: "Baked Bliss",
       description:
-        "A bakery e-commerce app with Stripe integration, product listing, and real-time user profiles. Built with Node.js, Firebase, and Stripe.",
+        "Full-stack bakery e-commerce app with Stripe secure checkout, real-time user profile management, and scalable Node.js/Firebase backend.",
       explore: "https://github.com/BitAnon47/baked-bliss",
     },
     {
@@ -20,7 +28,7 @@ const Projects = () => {
       altText: "Study Buddy",
       title: "Study Buddy",
       description:
-        "Freelancing platform for students and teachers with real-time chat and Stripe payment integration. Built with Node.js, Firebase, and Socket.IO.",
+        "EdTech freelancing platform connecting students/teachers. Features real-time Socket.IO chat, Stripe payments, and secure assignment uploads.",
       explore: "https://github.com/BitAnon47/study-buddy",
     },
     {
@@ -28,7 +36,7 @@ const Projects = () => {
       altText: "Book Enhancement Store",
       title: "Book Enhancement Store",
       description:
-        "Bookstore with chatbot recommendations and efficient backend management. Built with Node.js, Flutter, and Firebase.",
+        "Hybrid mobile/web bookstore built with Flutter & Node.js. Includes an ML-powered chatbot for recommendations and efficient order processing.",
       explore: "https://github.com/BitAnon47/book-store",
     },
   ];

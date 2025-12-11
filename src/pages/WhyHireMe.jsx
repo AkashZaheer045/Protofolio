@@ -10,31 +10,27 @@ const WhyHireMe = () => {
   const whyHireMeCards = [
     {
       imageUrl: scholar,
-      altText: "NTSE Scholar",
-      title: "2024",
-      description: "University Graduate",
+      altText: "Microservices Architect",
+      title: "Microservices",
+      description: "Modular, Scalable Systems",
     },
     {
       imageUrl: project,
-      altText: "Completed Projects",
-      title: "6+",
-      description: "Completed Projects",
+      altText: "High Performance",
+      title: "30% Faster",
+      description: "API Response Optimization",
     },
     {
       imageUrl: project,
-      altText: "Full Stack",
-      title: "Full Stack",
-      description: "Robust Web Applications",
-      // imageUrl: codechef,
-      // altText: "Codechef Rating",
-      // title: "4★",
-      // description: "Codechef Rating",
+      altText: "Secure Systems",
+      title: "Security",
+      description: "OAuth, JWT & Tess Integration",
     },
     {
       imageUrl: leetcode,
-      altText: "LeetCode Problems Solved",
-      title: "100",
-      description: "LeetCode Problems Solved",
+      altText: "Problem Solver",
+      title: "Problem Solver",
+      description: "Efficient & Clean Code",
     },
   ];
 
