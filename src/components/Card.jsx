@@ -3,17 +3,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 
-const Card = ({ imageUrl, altText, title, description, techStack, links, challenges }) => {
+const Card = ({ icon, title, description, techStack, links, challenges }) => {
   return (
     <div className="bg-gray-900 border border-gray-800 rounded-xl shadow-xl overflow-hidden flex flex-col h-full transition-transform hover:-translate-y-2 group">
-      <div className="relative overflow-hidden h-48">
-        <img
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-          src={imageUrl}
-          alt={altText}
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-60"></div>
+      <div className="h-32 bg-gradient-to-br from-blue-900/30 to-purple-900/30 flex items-center justify-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-gray-900/10 backdrop-blur-sm"></div>
+        <div className="z-10 text-5xl text-blue-400 group-hover:scale-110 transition-transform duration-300 drop-shadow-lg">
+          <FontAwesomeIcon icon={icon} />
+        </div>
       </div>
 
       <div className="p-6 flex flex-col flex-1 gap-4">

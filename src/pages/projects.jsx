@@ -1,15 +1,13 @@
 import { motion } from "framer-motion";
 import React from "react";
-import baked_bliss from "../assets/images/baked_bliss.jpg";
-import book_store from "../assets/images/Books.jpg";
-import study_buddy from "../assets/images/Study_Bliss.jpg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCar, faUtensils, faUserGraduate, faBook } from "@fortawesome/free-solid-svg-icons";
 import Card from "../components/Card";
 
 const Projects = () => {
   const cards = [
     {
-      imageUrl: baked_bliss, // Placeholder
-      altText: "Q Autos",
+      icon: faCar,
       title: "Q Autos - Car Rental",
       description:
         "A robust microservices-based car rental platform designed for high performance and scalability.",
@@ -21,12 +19,11 @@ const Projects = () => {
       ],
       links: {
         repo: "https://github.com/BitAnon47",
-        demo: null, // Add live link if available
+        demo: null,
       },
     },
     {
-      imageUrl: baked_bliss,
-      altText: "Baked Bliss",
+      icon: faUtensils,
       title: "Baked Bliss Bakery",
       description:
         "Full-stack e-commerce solution for a bakery with real-time features and secure checkout.",
@@ -42,8 +39,7 @@ const Projects = () => {
       },
     },
     {
-      imageUrl: study_buddy,
-      altText: "Study Buddy",
+      icon: faUserGraduate,
       title: "Study Buddy Platform",
       description:
         "EdTech freelancing platform connecting students and teachers with real-time collaboration tools.",
@@ -59,8 +55,7 @@ const Projects = () => {
       },
     },
     {
-      imageUrl: book_store,
-      altText: "Book Enhancement Store",
+      icon: faBook,
       title: "Book Enhancement Store",
       description:
         "Hybrid mobile and web bookstore featuring AI-powered recommendations.",
