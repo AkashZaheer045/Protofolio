@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link as ScrollLink } from "react-scroll";
 import github from "../assets/images/github.png";
 import linked_in from "../assets/images/linked_in.png";
 import profile from "../assets/images/profile.png";
