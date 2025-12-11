@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ContactForm from "./components/ContactForm";
 import Navbar from "./components/Navbar";
+import Services from "./components/Services";
 import Skills from "./components/Skills";
 import Loading from "./components/loading";
 import AboutMe from "./pages/About_me";
@@ -32,6 +33,7 @@ function App() {
             <Home id="mainy" />
             <AboutMe id="aboutMey" />
             <WhyHireMe />
+            <Services />
             <Skills id="skills" />
             <Projects id="project" />
             <ContactForm id="contact" />

@@ -33,14 +33,14 @@ const Home = () => {
             transition={{ delay: 0.2 }}
           >
             <h3 className="text-xl md:text-2xl font-mono text-cyan-400 mb-2 font-medium tracking-wide">
-              Hey there, I'm
+              Backend Developer
             </h3>
-            <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-2 tracking-tight drop-shadow-lg">
+            <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4 tracking-tight drop-shadow-lg">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400">
-                Muhammad Akash
+                Node.js, Express.js &
               </span>{" "}
               <br className="hidden md:block" />
-              Zaheer
+              PostgreSQL
             </h1>
           </motion.div>
 
@@ -48,56 +48,28 @@ const Home = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="text-lg md:text-2xl text-gray-300 max-w-2xl font-light"
+            className="text-lg md:text-2xl text-gray-300 max-w-2xl font-light mb-6"
           >
-            I craft seamless digital experiences as a{" "}
-            <span className="font-semibold text-white">
-              Full Stack Developer
-            </span>
-            .
+            I build <span className="text-white font-semibold">scalable APIs</span>, <span className="text-white font-semibold">automation systems</span>, and <span className="text-white font-semibold">cloud-based applications</span>.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
-            className="flex items-center gap-6 mt-4"
+            className="flex flex-wrap justify-center md:justify-start gap-4"
           >
-            <span className="text-gray-400 text-sm uppercase tracking-widest">
-              Connect
-            </span>
-            <div className="h-px w-12 bg-gray-700"></div>
-            <div className="flex gap-4">
-              <a
-                href="https://github.com/BitAnon47"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:-translate-y-1 transition-transform p-2 bg-gray-800 rounded-full border border-gray-700 hover:border-blue-500 hover:bg-gray-700"
-              >
-                <img src={github} alt="GitHub" className="w-6 h-6 invert" />
-              </a>
-              <a
-                href="https://linkedin.com/in/muhammad-akash-zaheer"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:-translate-y-1 transition-transform p-2 bg-gray-800 rounded-full border border-gray-700 hover:border-blue-500 hover:bg-gray-700"
-              >
-                <img src={linked_in} alt="LinkedIn" className="w-6 h-6 invert" />
-              </a>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8 }}
-            className="flex flex-wrap justify-center md:justify-start gap-4 mt-6"
-          >
-            <a href="mailto:akashzaheer786@gmail.com">
-              <button className="px-8 py-3.5 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold text-lg shadow-lg shadow-blue-500/30 hover:shadow-cyan-500/50 hover:scale-105 transition-all duration-300">
-                Contact Me
+            <ScrollLink
+              to="contact"
+              spy={true}
+              smooth={true}
+              offset={-80}
+              duration={600}
+            >
+              <button className="px-8 py-3.5 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold text-lg shadow-lg shadow-blue-500/30 hover:shadow-cyan-500/50 hover:scale-105 transition-all duration-300 cursor-pointer">
+                Hire Me
               </button>
-            </a>
+            </ScrollLink>
             <button
               onClick={() =>
                 window.open(

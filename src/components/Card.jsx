@@ -1,27 +1,72 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 
-const Card = ({ imageUrl, altText, title, description, explore }) => {
+const Card = ({ imageUrl, altText, title, description, techStack, links, challenges }) => {
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden flex flex-col h-full transition-transform hover:scale-105">
-      <img
-        className="w-full h-48 object-cover"
-        src={imageUrl}
-        alt={altText}
-        loading="lazy"
-      />
-      <div className="p-6 flex flex-col flex-1">
-        <h1 className="text-xl font-bold text-blue-700 dark:text-blue-300 mb-2">
-          {title}
-        </h1>
-        <p className="text-gray-700 dark:text-gray-200 flex-1 mb-4">
-          {description}
-        </p>
-        <button
-          className="mt-auto px-4 py-2 bg-blue-600 text-white rounded shadow hover:bg-blue-700 transition font-semibold flex items-center gap-2"
-          onClick={() => window.open(explore, "_blank")}
-        >
-          Explore <span>&rarr;</span>
-        </button>
+    <div className="bg-gray-900 border border-gray-800 rounded-xl shadow-xl overflow-hidden flex flex-col h-full transition-transform hover:-translate-y-2 group">
+      <div className="relative overflow-hidden h-48">
+        <img
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          src={imageUrl}
+          alt={altText}
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-60"></div>
+      </div>
+
+      <div className="p-6 flex flex-col flex-1 gap-4">
+        <div>
+          <h3 className="text-xl font-bold text-white mb-2 font-sans">{title}</h3>
+          <p className="text-gray-400 text-sm leading-relaxed mb-4">{description}</p>
+
+          {/* Tech Stack Badges */}
+          {techStack && (
+            <div className="flex flex-wrap gap-2 mb-4">
+              {techStack.map((tech, idx) => (
+                <span key={idx} className="px-2 py-1 bg-gray-800 text-cyan-400 text-xs rounded border border-gray-700">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          )}
+
+          {/* Challenges & Solutions */}
+          {challenges && (
+            <div className="mb-4 bg-gray-800/50 p-3 rounded text-xs text-gray-300">
+              <strong className="block text-gray-200 mb-1">Key Features:</strong>
+              <ul className="list-disc pl-4 space-y-1">
+                {challenges.map((point, idx) => (
+                  <li key={idx}>{point}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+
+        <div className="mt-auto flex gap-3">
+          {links?.repo && (
+            <a
+              href={links.repo}
+              target="_blank"
+              rel="noreferrer"
+              className="flex-1 text-center px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white rounded border border-gray-700 transition flex items-center justify-center gap-2 text-sm font-medium"
+            >
+              <FontAwesomeIcon icon={faGithub} /> Code
+            </a>
+          )}
+          {links?.demo && (
+            <a
+              href={links.demo}
+              target="_blank"
+              rel="noreferrer"
+              className="flex-1 text-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded shadow-lg shadow-blue-500/20 transition flex items-center justify-center gap-2 text-sm font-medium"
+            >
+              <FontAwesomeIcon icon={faExternalLinkAlt} /> Demo
+            </a>
+          )}
+        </div>
       </div>
     </div>
   );
