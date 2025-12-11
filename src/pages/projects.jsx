@@ -8,7 +8,7 @@ const Projects = () => {
   const cards = [
     {
       icon: faCar,
-      title: "Q Autos - Car Rental",
+      title: "Car Rental",
       description:
         "A robust microservices-based car rental platform designed for high performance and scalability.",
       techStack: ["Node.js", "Microservices", "Stripe", "Tess Payment", "AWS"],
