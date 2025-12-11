@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Services from "./components/Services";
 import Skills from "./components/Skills";
 import Loading from "./components/loading";
+import Starfield from "./components/Starfield";
 import AboutMe from "./pages/About_me";
 import Home from "./pages/Home";
 import WhyHireMe from "./pages/WhyHireMe";
@@ -21,7 +22,8 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-almond-100 dark:bg-gray-950 text-gray-900 dark:text-gray-100">
+    <div className="min-h-screen bg-almond-100 dark:aurora-bg dark:cyber-grid text-gray-900 dark:text-gray-100">
+      <Starfield />
       {isLoading ? (
         <div className="flex items-center justify-center h-screen">
           <Loading />

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link as ScrollLink } from "react-scroll";
 import profile from "../assets/images/profile.png";
 import AnimatedBackground from "../components/AnimatedBackground";
+import { ParallaxBackground, FloatingElement, SmoothReveal } from "../components/ParallaxEffects";
 
 const Home = () => {
   return (
@@ -14,11 +15,13 @@ const Home = () => {
         <AnimatedBackground />
       </div>
 
-      {/* Background Glow Effects */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-blue-600/10 dark:bg-blue-600/20 rounded-full blur-[100px]" />
-        <div className="absolute bottom-[20%] right-[-5%] w-[500px] h-[500px] bg-purple-600/10 dark:bg-purple-600/10 rounded-full blur-[120px]" />
-      </div>
+      {/* Background Glow Effects with Parallax */}
+      <ParallaxBackground speed={-0.3}>
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+          <div className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-blue-600/10 dark:bg-blue-600/20 rounded-full blur-[100px]" />
+          <div className="absolute bottom-[20%] right-[-5%] w-[500px] h-[500px] bg-purple-600/10 dark:bg-purple-600/10 rounded-full blur-[120px]" />
+        </div>
+      </ParallaxBackground>
 
       <motion.div
         variants={{
@@ -89,17 +92,17 @@ const Home = () => {
         {/* Profile Image with Advanced Animations */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-          animate={{ 
-            opacity: 1, 
-            scale: 1, 
+          animate={{
+            opacity: 1,
+            scale: 1,
             rotate: 0,
             y: [0, -20, 0],
           }}
-          transition={{ 
+          transition={{
             opacity: { delay: 0.3, duration: 0.6 },
             scale: { delay: 0.3, duration: 0.6 },
             rotate: { delay: 0.3, duration: 0.6 },
-            y: { 
+            y: {
               delay: 1,
               duration: 3,
               repeat: Infinity,
@@ -113,11 +116,11 @@ const Home = () => {
             {/* Animated rings around profile */}
             <motion.div
               className="absolute inset-0 rounded-full border-2 border-cyan-400/30"
-              animate={{ 
+              animate={{
                 scale: [1, 1.1, 1],
                 opacity: [0.3, 0.6, 0.3]
               }}
-              transition={{ 
+              transition={{
                 duration: 2,
                 repeat: Infinity,
                 ease: "easeInOut"
@@ -126,11 +129,11 @@ const Home = () => {
             />
             <motion.div
               className="absolute inset-0 rounded-full border-2 border-blue-400/30"
-              animate={{ 
+              animate={{
                 scale: [1, 1.2, 1],
                 opacity: [0.3, 0.6, 0.3]
               }}
-              transition={{ 
+              transition={{
                 duration: 2,
                 delay: 0.5,
                 repeat: Infinity,
@@ -138,7 +141,7 @@ const Home = () => {
               }}
               style={{ padding: '40px' }}
             />
-            
+
             <img
               src={profile}
               alt="Profile"

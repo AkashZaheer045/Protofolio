@@ -33,7 +33,7 @@ const SkillCard = ({ name, level, icon, color }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.3 }}
-      className="relative bg-almond-50 dark:bg-gray-800/50 backdrop-blur-sm border border-almond-300 dark:border-gray-700 p-3 rounded-lg shadow-md flex flex-col gap-2 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/20 transition-all group cursor-pointer overflow-hidden"
+      className="relative dark:neo-card border border-cyan-500/20 p-3 rounded-xl flex flex-col gap-2 hover:dark:neo-neon-blue hover:border-cyan-500/50 transition-all group cursor-pointer overflow-hidden"
     >
       {/* Icon Watermark - Hidden by default, shown on hover */}
       <motion.div
@@ -46,7 +46,7 @@ const SkillCard = ({ name, level, icon, color }) => {
         <h4 className="text-base font-semibold text-gray-900 dark:text-gray-200 text-center mb-2 font-sans">
           {name}
         </h4>
-        <div className="h-1.5 w-full bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+        <div className="h-1.5 w-full bg-gray-200 dark:bg-gray-900/50 rounded-full overflow-hidden">
           <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: `${level}%` }}
