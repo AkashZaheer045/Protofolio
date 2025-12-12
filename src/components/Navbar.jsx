@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link as ScrollLink } from "react-scroll";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDownload, faSun, faMoon, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -27,160 +29,114 @@ const Navbar = () => {
 
   const toggleDarkMode = () => setIsDark(!isDark);
 
-  return (
-    <header className="sticky top-0 z-50 bg-almond-50/95 dark:bg-gray-900/80 backdrop-blur-md shadow-md border-b border-almond-300 dark:border-gray-800 transition-colors duration-300">
-      <nav className="container mx-auto flex items-center justify-between px-4 py-3">
-        <h2 className="text-2xl font-bold text-blue-600 dark:text-blue-400 font-mono">
-          Portfolio
-        </h2>
-        <div className="hidden md:flex space-x-6 items-center">
-          <ScrollLink
-            to="mainy"
-            spy={true}
-            smooth={true}
-            offset={-80}
-            duration={600}
-            className="cursor-pointer text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition font-medium text-sm uppercase tracking-wide"
-          >
-            Home
-          </ScrollLink>
-          <ScrollLink
-            to="aboutMey"
-            spy={true}
-            smooth={true}
-            offset={-80}
-            duration={600}
-            className="cursor-pointer text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition font-medium text-sm uppercase tracking-wide"
-          >
-            About Me
-          </ScrollLink>
-          <ScrollLink
-            to="services"
-            spy={true}
-            smooth={true}
-            offset={-80}
-            duration={600}
-            className="cursor-pointer text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition font-medium text-sm uppercase tracking-wide"
-          >
-            Services
-          </ScrollLink>
-          <ScrollLink
-            to="skills"
-            spy={true}
-            smooth={true}
-            offset={-80}
-            duration={600}
-            className="cursor-pointer text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition font-medium text-sm uppercase tracking-wide"
-          >
-            Skills
-          </ScrollLink>
-          <ScrollLink
-            to="project"
-            spy={true}
-            smooth={true}
-            offset={-80}
-            duration={600}
-            className="cursor-pointer text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition font-medium text-sm uppercase tracking-wide"
-          >
-            Projects
-          </ScrollLink>
-          <ScrollLink
-            to="contact"
-            spy={true}
-            smooth={true}
-            offset={-80}
-            duration={600}
-            className="cursor-pointer text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition font-medium text-sm uppercase tracking-wide"
-          >
-            Contact
-          </ScrollLink>
+  const navItems = [
+    { to: "aboutMey", label: "About" },
+    { to: "skills", label: "Skills" },
+    { to: "project", label: "Projects" },
+    { to: "services", label: "Experience" },
+    { to: "contact", label: "Contact" },
+  ];
 
-          {/* Toggle Button */}
+  return (
+    <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-md shadow-soft border-b border-border transition-colors duration-300">
+      <nav className="container mx-auto flex items-center justify-between px-4 py-3">
+        {/* Logo / Name */}
+        <ScrollLink
+          to="mainy"
+          spy={true}
+          smooth={true}
+          offset={-80}
+          duration={600}
+          className="cursor-pointer"
+        >
+          <h2 className="text-xl font-bold text-primary font-heading">
+            Akash Zaheer
+          </h2>
+        </ScrollLink>
+
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex space-x-6 items-center">
+          {navItems.map((item) => (
+            <ScrollLink
+              key={item.to}
+              to={item.to}
+              spy={true}
+              smooth={true}
+              offset={-80}
+              duration={600}
+              className="cursor-pointer text-foreground/70 hover:text-primary transition font-medium text-sm"
+            >
+              {item.label}
+            </ScrollLink>
+          ))}
+
+          {/* Theme Toggle */}
           <button
             onClick={toggleDarkMode}
-            className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-yellow-400 hover:bg-gray-300 dark:hover:bg-gray-700 transition"
+            className="p-2 rounded-full bg-secondary text-foreground hover:bg-secondary/80 transition"
             aria-label="Toggle Theme"
           >
-            {isDark ? (
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m8.66-13.66l-.71.71M4.05 19.95l-.71.71M21 12h-1M4 12H3m16.66 5.66l-.71-.71M4.05 4.05l-.71-.71M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-              </svg>
-            ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-              </svg>
-            )}
+            <FontAwesomeIcon icon={isDark ? faSun : faMoon} className="w-4 h-4" />
           </button>
+
+          {/* Resume Button */}
+          <a
+            href="https://drive.google.com/file/d/1XjzhzvCrVCnxSTXe2VgFkUMsMZqMvGZD/view?usp=sharing"
+            target="_blank"
+            rel="noreferrer"
+            className="px-4 py-2 bg-primary text-primary-foreground rounded-lg font-medium text-sm flex items-center gap-2 hover:bg-primary/90 transition shadow-glow"
+          >
+            <FontAwesomeIcon icon={faDownload} className="w-3 h-3" />
+            Resume
+          </a>
         </div>
 
-        {/* Hamburger for mobile */}
+        {/* Mobile Menu Button */}
         <button
-          className="md:hidden flex flex-col space-y-1"
+          className="md:hidden p-2 text-foreground"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
-          <span className="w-6 h-0.5 bg-gray-200"></span>
-          <span className="w-6 h-0.5 bg-gray-200"></span>
-          <span className="w-6 h-0.5 bg-gray-200"></span>
+          <FontAwesomeIcon icon={menuOpen ? faTimes : faBars} className="w-5 h-5" />
         </button>
+
         {/* Mobile menu */}
         {menuOpen && (
-          <div className="absolute top-full left-0 w-full bg-gray-900 shadow-md flex flex-col items-center py-4 md:hidden">
-            <ScrollLink
-              to="mainy"
-              spy={true}
-              smooth={true}
-              offset={-80}
-              duration={600}
-              className="py-2 w-full text-center text-gray-200 hover:text-blue-400 transition font-medium"
-              onClick={() => setMenuOpen(false)}
+          <div className="absolute top-full left-0 w-full bg-card shadow-md flex flex-col items-center py-4 md:hidden border-b border-border">
+            {navItems.map((item) => (
+              <ScrollLink
+                key={item.to}
+                to={item.to}
+                spy={true}
+                smooth={true}
+                offset={-80}
+                duration={600}
+                className="py-3 w-full text-center text-foreground hover:text-primary transition font-medium"
+                onClick={() => setMenuOpen(false)}
+              >
+                {item.label}
+              </ScrollLink>
+            ))}
+
+            {/* Mobile Theme Toggle */}
+            <button
+              onClick={toggleDarkMode}
+              className="py-3 w-full text-center text-foreground hover:text-primary transition font-medium flex items-center justify-center gap-2"
             >
-              Home
-            </ScrollLink>
-            <ScrollLink
-              to="aboutMey"
-              spy={true}
-              smooth={true}
-              offset={-80}
-              duration={600}
-              className="py-2 w-full text-center text-gray-200 hover:text-blue-400 transition font-medium"
-              onClick={() => setMenuOpen(false)}
+              <FontAwesomeIcon icon={isDark ? faSun : faMoon} className="w-4 h-4" />
+              {isDark ? "Light Mode" : "Dark Mode"}
+            </button>
+
+            {/* Mobile Resume Button */}
+            <a
+              href="https://drive.google.com/file/d/1XjzhzvCrVCnxSTXe2VgFkUMsMZqMvGZD/view?usp=sharing"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-2 px-6 py-2 bg-primary text-primary-foreground rounded-lg font-medium text-sm flex items-center gap-2"
             >
-              About Me
-            </ScrollLink>
-            <ScrollLink
-              to="skills"
-              spy={true}
-              smooth={true}
-              offset={-80}
-              duration={600}
-              className="py-2 w-full text-center text-gray-200 hover:text-blue-400 transition font-medium"
-              onClick={() => setMenuOpen(false)}
-            >
-              Skills
-            </ScrollLink>
-            <ScrollLink
-              to="project"
-              spy={true}
-              smooth={true}
-              offset={-80}
-              duration={600}
-              className="py-2 w-full text-center text-gray-200 hover:text-blue-400 transition font-medium"
-              onClick={() => setMenuOpen(false)}
-            >
-              Projects
-            </ScrollLink>
-            <ScrollLink
-              to="contact"
-              spy={true}
-              smooth={true}
-              offset={-80}
-              duration={600}
-              className="py-2 w-full text-center text-gray-200 hover:text-blue-400 transition font-medium"
-              onClick={() => setMenuOpen(false)}
-            >
-              Contact Me
-            </ScrollLink>
+              <FontAwesomeIcon icon={faDownload} className="w-3 h-3" />
+              Resume
+            </a>
           </div>
         )}
       </nav>

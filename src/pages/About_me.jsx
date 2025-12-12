@@ -1,58 +1,152 @@
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useRef } from "react";
+import { useInView } from "framer-motion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLightbulb, faBullseye, faBolt } from "@fortawesome/free-solid-svg-icons";
+import profile from "../assets/images/profile.png";
+
+const highlights = [
+  {
+    icon: faLightbulb,
+    title: 'My Vision',
+    description: 'To build robust backend systems that power innovative applications and drive business growth.',
+  },
+  {
+    icon: faBullseye,
+    title: 'My Approach',
+    description: 'Combining technical excellence with security best practices to deliver reliable, scalable solutions.',
+  },
+  {
+    icon: faBolt,
+    title: 'My Focus',
+    description: 'Building production-ready APIs and microservices that solve real-world problems effectively.',
+  },
+];
+
+const expertise = [
+  'Node.js',
+  'Microservices',
+  'AWS & Cloud',
+  'DevOps',
+  'API Development',
+  'Database Design',
+];
 
 const AboutMe = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
+
   return (
     <motion.section
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.2, duration: 0.5 }}
-      viewport={{ once: true }}
+      ref={ref}
       id="aboutMey"
-      className="py-16 px-6 md:px-16 bg-almond-100 dark:bg-gray-900"
+      className="py-20 md:py-32 px-6 md:px-16 bg-gradient-subtle"
     >
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-gray-900 dark:text-blue-400">
-        About Me
-      </h2>
-      <div className="flex flex-col md:flex-row items-center md:items-start gap-8 max-w-4xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <motion.div
-          className="flex-1 bg-almond-50 dark:bg-gray-800 border border-almond-300 dark:border-gray-700 rounded-xl shadow-lg p-6 md:p-8 flex flex-col justify-center"
-          whileHover={{ scale: 1.02 }}
-          transition={{ type: "spring", stiffness: 300 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
         >
-          <p className="text-lg md:text-xl text-gray-800 dark:text-gray-200 leading-relaxed mb-6">
-            Hello! I'm{" "}
-            <span className="font-semibold text-blue-600 dark:text-blue-300">
-              Muhammad Akash Zaheer
-            </span>
-            , a <span className="font-semibold">Backend & DevOps Engineer</span>{" "}
-            with strong experience in Node.js, Microservices, and DevOps tools.
-            I specialize in building secure, scalable, real-time systems using
-            REST APIs, WebSockets, Firebase, and AWS. My passion lies in backend
-            security, automation, and cloud infrastructure. I'm always excited
-            to take on new challenges and contribute to innovative projects!
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
+            About <span className="text-gradient">Me</span>
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Passionate developer with a focus on creating scalable, secure backend systems
           </p>
-          <div className="flex flex-wrap gap-3 mt-2">
-            <span className="bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full text-sm font-semibold shadow">
-              Node.js
-            </span>
-            <span className="bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-200 px-3 py-1 rounded-full text-sm font-semibold shadow">
-              AWS
-            </span>
-            <span className="bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-200 px-3 py-1 rounded-full text-sm font-semibold shadow">
-              DevOps
-            </span>
-            <span className="bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-200 px-3 py-1 rounded-full text-sm font-semibold shadow">
-              Microservices
-            </span>
-            <span className="bg-pink-100 text-pink-700 dark:bg-pink-900 dark:text-pink-200 px-3 py-1 rounded-full text-sm font-semibold shadow">
-              Security
-            </span>
-            <span className="bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-100 px-3 py-1 rounded-full text-sm font-semibold shadow">
-              Automation
-            </span>
-          </div>
         </motion.div>
+
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Image Side - Left */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="relative"
+          >
+            <div className="relative aspect-square max-w-md mx-auto">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary to-accent rounded-2xl opacity-20 blur-2xl" />
+              <div className="relative h-full rounded-2xl overflow-hidden shadow-elevated border border-border/50">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/10" />
+                <div className="h-full flex items-center justify-center bg-secondary/50">
+                  <div className="text-center p-8">
+                    {/* Profile Picture */}
+                    <div className="w-32 h-32 rounded-full bg-primary/20 mx-auto mb-4 overflow-hidden border-4 border-primary/30">
+                      <img
+                        src={profile}
+                        alt="Akash Zaheer"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <h3 className="text-xl font-heading font-semibold text-foreground">Akash Zaheer</h3>
+                    <p className="text-muted-foreground">Backend & DevOps Engineer</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Content Side - Right */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="space-y-6"
+          >
+            <div>
+              <h3 className="text-xl font-heading font-semibold mb-3 text-foreground">Who I Am</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                I'm Akash Zaheer, a Full-Stack Software Developer skilled in building complete applications from scalable backend APIs to modern frontend interfaces. I work with Node.js, Express.js, PostgreSQL, React/Next.js, AWS, Firebase, CI/CD, and WebSockets. I also develop AI-driven systems including MCP automation, Pinecone-based semantic search, and advanced authentication frameworks, focusing on performance, security, and cloud-ready architecture.
+              </p>
+            </div>
+
+            <div>
+              <p className="text-muted-foreground leading-relaxed">
+                My journey in software development started with a fascination for how systems work together. This curiosity led me to specialize in backend architecture and DevOps practices, building robust APIs and cloud infrastructure.
+              </p>
+            </div>
+
+            {/* Expertise Tags */}
+            <div>
+              <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-3">
+                Areas of Expertise
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {expertise.map((skill, index) => (
+                  <motion.span
+                    key={skill}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ delay: 0.4 + index * 0.05 }}
+                    className="px-3 py-1.5 rounded-full text-sm font-medium bg-primary/10 text-primary border border-primary/20"
+                  >
+                    {skill}
+                  </motion.span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Highlights */}
+        <div className="grid md:grid-cols-3 gap-6 mt-16">
+          {highlights.map((item, index) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+              className="p-6 rounded-xl glass hover-lift"
+            >
+              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                <FontAwesomeIcon icon={item.icon} className="w-6 h-6 text-primary" />
+              </div>
+              <h4 className="font-heading font-semibold mb-2 text-foreground">{item.title}</h4>
+              <p className="text-sm text-muted-foreground">{item.description}</p>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </motion.section>
   );

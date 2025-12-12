@@ -78,14 +78,14 @@ const Projects = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2, duration: 0.5 }}
       viewport={{ margin: "-100px", once: true }}
-      className="py-20 px-6 md:px-16 bg-almond-200 dark:bg-gray-950"
+      className="py-20 px-6 md:px-16 bg-secondary/30"
       id="project"
     >
       <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+        <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4 font-heading">
           Featured Projects
         </h2>
-        <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        <p className="text-muted-foreground max-w-2xl mx-auto">
           A collection of high-performance, scalable applications built with modern tech stacks.
         </p>
       </div>

@@ -22,7 +22,7 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-almond-100 dark:aurora-bg dark:cyber-grid text-gray-900 dark:text-gray-100">
+    <div className="min-h-screen bg-background dark:aurora-bg dark:cyber-grid text-foreground">
       <Starfield />
       {isLoading ? (
         <div className="flex items-center justify-center h-screen">

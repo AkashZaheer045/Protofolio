@@ -1,14 +1,22 @@
 import { motion } from "framer-motion";
 import { Link as ScrollLink } from "react-scroll";
-import profile from "../assets/images/profile.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope, faArrowDown, faDownload } from "@fortawesome/free-solid-svg-icons";
 import AnimatedBackground from "../components/AnimatedBackground";
-import { ParallaxBackground, FloatingElement, SmoothReveal } from "../components/ParallaxEffects";
+import { ParallaxBackground } from "../components/ParallaxEffects";
+
+const socialLinks = [
+  { icon: faGithub, href: 'https://github.com/AkashZaheer045', label: 'GitHub' },
+  { icon: faLinkedin, href: 'https://linkedin.com/in/muhammad-akash-zaheer', label: 'LinkedIn' },
+  { icon: faEnvelope, href: '#contact', label: 'Email' },
+];
 
 const Home = () => {
   return (
     <section
       id="mainy"
-      className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-almond-200 via-almond-100 to-almond-50 dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-black overflow-hidden px-6 md:px-12 py-20"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 md:px-12 py-20"
     >
       {/* Animated Background - Only in Dark Mode */}
       <div className="hidden dark:block">
@@ -18,136 +26,191 @@ const Home = () => {
       {/* Background Glow Effects with Parallax */}
       <ParallaxBackground speed={-0.3}>
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-          <div className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-blue-600/10 dark:bg-blue-600/20 rounded-full blur-[100px]" />
-          <div className="absolute bottom-[20%] right-[-5%] w-[500px] h-[500px] bg-purple-600/10 dark:bg-purple-600/10 rounded-full blur-[120px]" />
+          <div className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-primary/10 dark:bg-blue-600/20 rounded-full blur-[100px]" />
+          <div className="absolute bottom-[20%] right-[-5%] w-[500px] h-[500px] bg-accent/10 dark:bg-purple-600/10 rounded-full blur-[120px]" />
         </div>
       </ParallaxBackground>
 
-      <motion.div
-        variants={{
-          hidden: { opacity: 0, scale: 0.95 },
-          visible: { opacity: 1, scale: 1 },
-        }}
-        initial="hidden"
-        animate="visible"
-        transition={{ duration: 0.8 }}
-        className="relative z-10 container max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-12 md:gap-8"
-      >
-        {/* Text Content */}
-        <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left gap-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            <h3 className="text-xl md:text-2xl font-mono text-blue-600 dark:text-cyan-400 mb-2 font-medium tracking-wide">
-              Software Developer
-            </h3>
-            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-4 tracking-tight drop-shadow-lg">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 dark:from-blue-400 dark:via-cyan-400 dark:to-purple-400">
-                Building Scalable
-              </span>{" "}
-              <br className="hidden md:block" />
-              <span className="text-gray-900 dark:text-white">Software Solutions</span>
-            </h1>
-          </motion.div>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="text-lg md:text-2xl text-gray-700 dark:text-gray-300 max-w-2xl font-light mb-6"
-          >
-            I build complete <span className="text-gray-900 dark:text-white font-semibold">full-stack solutions</span> that <span className="text-gray-900 dark:text-white font-semibold">automate workflows</span> and <span className="text-gray-900 dark:text-white font-semibold">scale efficiently</span> across modern cloud platforms.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.5 }}
-            className="flex gap-4 flex-wrap"
-          >
-            <ScrollLink to="contact" smooth={true} duration={600}>
-              <motion.button
-                whileHover={{ scale: 1.05, boxShadow: "0 10px 40px rgba(6, 182, 212, 0.3)" }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-full font-semibold shadow-lg hover:shadow-cyan-500/50 transition-all cursor-pointer"
-              >
-                Hire Me
-              </motion.button>
-            </ScrollLink>
-            <motion.a
-              href="https://drive.google.com/file/d/1XjzhzvCrVCnxSTXe2VgFkUMsMZqMvGZD/view?usp=sharing"
-              target="_blank"
-              rel="noreferrer"
-              whileHover={{ scale: 1.05, borderColor: "rgba(6, 182, 212, 1)" }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 border-2 border-gray-700 dark:border-gray-300 text-gray-900 dark:text-gray-100 rounded-full font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition-all"
+      <div className="container max-w-6xl mx-auto relative z-10 pt-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div className="text-center lg:text-left">
+            {/* Status Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6"
             >
-              View Resume
-            </motion.a>
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              <span className="text-sm font-medium text-primary">Available for new projects</span>
+            </motion.div>
+
+            {/* Main Heading */}
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold mb-2 leading-tight text-foreground"
+            >
+              Muhammad Akash Zaheer
+            </motion.h1>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-gradient mb-6"
+            >
+              Software Engineer
+            </motion.h2>
+
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8"
+            >
+              Specializing in{' '}
+              <span className="text-primary font-medium">Full stack Applications</span>,{' '}
+              <span className="text-primary font-medium">Cloud solutions</span>, and{' '}
+              <span className="text-primary font-medium">Microservices</span>{' '}
+              with a passion for building scalable, secure systems.
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 mb-8"
+            >
+              <ScrollLink to="project" smooth={true} duration={600}>
+                <motion.button
+                  whileHover={{ scale: 1.05, boxShadow: "0 10px 40px rgba(6, 182, 212, 0.3)" }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-3 bg-primary text-primary-foreground rounded-lg font-semibold shadow-glow flex items-center gap-2 cursor-pointer"
+                >
+                  View Projects
+                  <FontAwesomeIcon icon={faArrowDown} className="w-4 h-4" />
+                </motion.button>
+              </ScrollLink>
+              <ScrollLink to="contact" smooth={true} duration={600}>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-3 border-2 border-border text-foreground rounded-lg font-semibold hover:bg-secondary transition-all cursor-pointer"
+                >
+                  Contact Me
+                </motion.button>
+              </ScrollLink>
+            </motion.div>
+
+            {/* Social Links */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="flex items-center justify-center lg:justify-start gap-4"
+            >
+              {socialLinks.map((social, index) => (
+                <motion.a
+                  key={social.label}
+                  href={social.href}
+                  target={social.href.startsWith('http') ? '_blank' : undefined}
+                  rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.6 + index * 0.1 }}
+                  className="p-3 rounded-full bg-card border border-border shadow-card hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300 hover:-translate-y-1"
+                  aria-label={social.label}
+                >
+                  <FontAwesomeIcon icon={social.icon} className="w-5 h-5" />
+                </motion.a>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Right Content - Code Snippet */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="hidden lg:block"
+          >
+            <div className="relative">
+              {/* Glow effect */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-2xl opacity-20 blur-xl" />
+
+              {/* Code window */}
+              <div className="relative rounded-2xl overflow-hidden bg-gray-900 shadow-elevated">
+                {/* Window header */}
+                <div className="flex items-center gap-2 px-4 py-3 bg-gray-800 border-b border-gray-700">
+                  <div className="flex gap-1.5">
+                    <div className="w-3 h-3 rounded-full bg-red-500" />
+                    <div className="w-3 h-3 rounded-full bg-yellow-500" />
+                    <div className="w-3 h-3 rounded-full bg-green-500" />
+                  </div>
+                  <span className="text-xs text-gray-400 ml-auto font-mono">Portfolio.tsx</span>
+                </div>
+
+                {/* Code content */}
+                <div className="p-6 font-mono text-sm">
+                  <pre className="text-gray-100 leading-relaxed">
+                    <code>
+                      <span className="text-primary">const</span>{' '}
+                      <span className="text-cyan-400">Developer</span>{' '}
+                      <span className="text-gray-400">=</span>{' '}
+                      <span className="text-gray-400">{'{'}</span>
+                      {'\n'}
+                      {'  '}<span className="text-primary">name:</span>{' '}
+                      <span className="text-emerald-400">"Akash Zaheer"</span>,
+                      {'\n'}
+                      {'  '}<span className="text-primary">specialization:</span>{' '}
+                      <span className="text-emerald-400">"Backend & DevOps"</span>,
+                      {'\n'}
+                      {'  '}<span className="text-primary">focus:</span>{' '}
+                      <span className="text-gray-400">[</span>
+                      {'\n'}
+                      {'    '}<span className="text-emerald-400">"Node.js & Microservices"</span>,
+                      {'\n'}
+                      {'    '}<span className="text-emerald-400">"AWS & Cloud Solutions"</span>,
+                      {'\n'}
+                      {'    '}<span className="text-emerald-400">"API Development"</span>,
+                      {'\n'}
+                      {'  '}<span className="text-gray-400">],</span>
+                      {'\n'}
+                      {'  '}<span className="text-primary">experience:</span>{' '}
+                      <span className="text-orange-400">2</span>
+                      {'\n'}
+                      <span className="text-gray-400">{'}'};</span>
+                    </code>
+                  </pre>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
+      </div>
 
-        {/* Profile Image with Advanced Animations */}
+      {/* Scroll Indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 0.6 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      >
         <motion.div
-          initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-          animate={{
-            opacity: 1,
-            scale: 1,
-            rotate: 0,
-            y: [0, -20, 0],
-          }}
-          transition={{
-            opacity: { delay: 0.3, duration: 0.6 },
-            scale: { delay: 0.3, duration: 0.6 },
-            rotate: { delay: 0.3, duration: 0.6 },
-            y: {
-              delay: 1,
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }
-          }}
-          className="relative z-10"
-          whileHover={{ scale: 1.05, rotate: 5 }}
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="flex flex-col items-center gap-2 text-muted-foreground"
         >
-          <div className="relative">
-            {/* Animated rings around profile */}
-            <motion.div
-              className="absolute inset-0 rounded-full border-2 border-cyan-400/30"
-              animate={{
-                scale: [1, 1.1, 1],
-                opacity: [0.3, 0.6, 0.3]
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              style={{ padding: '20px' }}
-            />
-            <motion.div
-              className="absolute inset-0 rounded-full border-2 border-blue-400/30"
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.3, 0.6, 0.3]
-              }}
-              transition={{
-                duration: 2,
-                delay: 0.5,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              style={{ padding: '40px' }}
-            />
-
-            <img
-              src={profile}
-              alt="Profile"
-              className="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-cyan-400 dark:border-cyan-400 shadow-2xl shadow-cyan-500/50"
-            />
-          </div>
+          <span className="text-xs font-medium uppercase tracking-widest">Scroll</span>
+          <FontAwesomeIcon icon={faArrowDown} className="w-4 h-4" />
         </motion.div>
       </motion.div>
     </section>
