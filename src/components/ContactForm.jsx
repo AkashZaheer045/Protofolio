@@ -116,7 +116,7 @@ const ContactForm = () => {
               id="name"
               name="name"
               className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground focus:outline-none focus:border-primary transition-colors"
-              placeholder="John Doe"
+              placeholder="Full Name"
               value={formData.name}
               onChange={handleChange}
               required
@@ -129,7 +129,7 @@ const ContactForm = () => {
               id="email"
               name="email"
               className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground focus:outline-none focus:border-primary transition-colors"
-              placeholder="john@example.com"
+              placeholder="Email"
               value={formData.email}
               onChange={handleChange}
               required
