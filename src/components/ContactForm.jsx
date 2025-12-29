@@ -5,6 +5,7 @@ import {
   faPaperPlane,
   faPhone,
   faCheckCircle,
+  faExclamationCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
@@ -27,13 +28,31 @@ const ContactForm = () => {
     e.preventDefault();
     setStatus("submitting");
 
-    // Simulate API call (Replace with EmailJS logic)
-    // emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', e.target, 'YOUR_USER_ID')
-    setTimeout(() => {
-      setStatus("success");
-      setFormData({ name: "", email: "", message: "" });
+    try {
+      const response = await fetch('http://localhost:3033/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setStatus("success");
+        setFormData({ name: "", email: "", message: "" });
+        setTimeout(() => setStatus("idle"), 3000);
+      } else {
+        setStatus("error");
+        console.error('Failed to send email:', data.error);
+        setTimeout(() => setStatus("idle"), 3000);
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setStatus("error");
       setTimeout(() => setStatus("idle"), 3000);
-    }, 2000);
+    }
   };
 
   return (
@@ -154,6 +173,8 @@ const ContactForm = () => {
             disabled={status === "submitting" || status === "success"}
             className={`w-full py-4 rounded-lg font-bold text-lg flex items-center justify-center gap-2 transition-all duration-300 ${status === "success"
               ? "bg-green-600 text-white cursor-default"
+              : status === "error"
+              ? "bg-red-600 text-white cursor-default"
               : "bg-gradient-to-r from-primary to-accent text-primary-foreground hover:shadow-lg hover:shadow-primary/25"
               }`}
           >
@@ -162,6 +183,10 @@ const ContactForm = () => {
             ) : status === "success" ? (
               <>
                 <FontAwesomeIcon icon={faCheckCircle} /> Sent Successfully
+              </>
+            ) : status === "error" ? (
+              <>
+                <FontAwesomeIcon icon={faExclamationCircle} /> Failed to Send
               </>
             ) : (
               <>

@@ -34,7 +34,7 @@ const Projects = () => {
         "Responsive UI for seamless mobile ordering.",
       ],
       links: {
-        repo: "https://github.com/AkashZaheer045/baked-bliss",
+        repo: "https://github.com/AkashZaheer045/BakedBliss-backend",
         demo: null,
       },
     },
@@ -66,7 +66,7 @@ const Projects = () => {
         "Efficient order processing system.",
       ],
       links: {
-        repo: "https://github.com/AkashZaheer045/book-store",
+        repo: "https://github.com/AkashZaheer045/Book-Enhancement-Store-Backend",
         demo: null,
       },
     },

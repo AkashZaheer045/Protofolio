@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.2",
     "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
     "express": "^4.19.2",
     "framer-motion": "^11.2.13",
     "googleapis": "^140.0.1",
@@ -26,6 +27,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "server": "node server.js",
     "deploy": "gh-pages -d build",
     "predeploy": "npm run build",
     "build": "react-scripts build",
